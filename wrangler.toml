@@ -1,5 +1,6 @@
 name = "webfinger"
 type = "javascript"
+main = "webfinger.js"
 
 account_id = ""
 workers_dev = false

@@ -42,7 +42,7 @@ $ curl http://127.0.0.1:8787\?resource\=acct:ps@pstadler.dev
 
 ## Deployment
 
-Copy `wrangler.toml.example` to `wrangler.toml` and change values according to your needs.
+Change values in `wrangler.toml` according to your needs.
 
 ```sh
 # Either make sure `wrangler` is available on your system, or run
