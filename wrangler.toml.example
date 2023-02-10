@@ -1,0 +1,8 @@
+name = "webfinger"
+type = "javascript"
+
+account_id = ""
+workers_dev = false
+zone_id = ""
+route = "pstadler.dev/.well-known/webfinger*"
+compatibility_date = "2023-02-10"

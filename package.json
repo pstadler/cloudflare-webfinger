@@ -1,0 +1,16 @@
+{
+  "name": "cloudflare-webfinger",
+  "version": "1.0.0",
+  "description": "",
+  "main": "webfinger.js",
+  "scripts": {
+    "dev": "miniflare -w",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Patrick Stadler <patrick.stadler@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@cloudflare/wrangler": "^1.20.0",
+    "miniflare": "^2.11.0"
+  }
+}
