@@ -6,15 +6,16 @@ When presented with a string like `ps@infosec.exchange`, Mastodon clients use th
 We can make use of this by proxying requests to our own custom domain at `/.well-known/webfinger` to the actual Mastodon instance using Cloudflare Workers.
 
 ```mermaid
-flowchart TD
-  origin("Client calls webfinger endpoint for ps@pstadler.dev:<br>https://pstadler.dev/.well-known/webfinger?resource=acct:ps@pstadler.dev")
-  subgraph worker[Cloudflare Worker]
-    mapping("Find target for alias in mapping:<br>ps@pstadler.dev → ps@infosec.exchange")
-    -->
-    target("Call webfinger endpoint for target:<br>https://infosec.exchange/.well-known/webfinger?resource=acct:ps@infosec.exchange")
-  end
-  response("Client receives response for ps@infosec.exchange")
-  origin --> worker --> response
+sequenceDiagram
+  actor C as Client
+  participant W as Cloudflare Worker
+  participant M as Mastodon Instance
+
+  C->>+W: GET https://pstadler.dev/.well-known/webfinger<br>?resource=acct:ps@pstadler.dev
+  Note over W: Find target for alias in mapping:<br>ps@pstadler.dev → ps@infosec.exchange
+  W->>+M: GET https://infosec.exchange/.well-known/webfinger<br>?resource=acct:ps@infosec.exchange
+  M-->>-W: Response for ps@infosec.exchange
+  W-->>-C: Response for ps@infosec.exchange
 ```
 
 ## Configuration
